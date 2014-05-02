@@ -12,7 +12,7 @@ package br.com.rodrigoviniciusronaldo;
 public class ContatosNaNuvem {
 
     public static void main(String[] args) {
-        // testando alteração e sinconia com github
+        // testando alteração e sinconia com github o.o
     }
     
 }
