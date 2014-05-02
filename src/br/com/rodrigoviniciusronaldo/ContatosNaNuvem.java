@@ -35,26 +35,26 @@ public class ContatosNaNuvem {
             }
             
             if (menuPrograma == 1) {
-                InserirContato();
+                InserirContato(new Contato());
             } else if (menuPrograma == 2) {
-                BuscarContato();
+                BuscarContato(new Contato());
             } else if (menuPrograma == 3) {
                 ExibirNomeContatos();
             } else if (menuPrograma == 4) {
-                AtualizarContato();
+                AtualizarContato(new Contato());
             } else if (menuPrograma == 5) {
-                RemoverContato();
+                RemoverContato(new Contato());
             } else if (menuPrograma == 6) {
                 System.exit(0);
             }
         }
     }
 
-    private static void InserirContato() {
+    private static void InserirContato(Contato c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static void BuscarContato() {
+    private static void BuscarContato(Contato c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -62,11 +62,11 @@ public class ContatosNaNuvem {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static void AtualizarContato() {
+    private static void AtualizarContato(Contato c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private static void RemoverContato() {
+    private static void RemoverContato(Contato c) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
