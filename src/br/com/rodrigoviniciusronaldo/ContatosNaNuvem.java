@@ -7,13 +7,12 @@
 package br.com.rodrigoviniciusronaldo;
 
 /**
- *
  * @author Rodrigo Celebrone
  */
 public class ContatosNaNuvem {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        // testando alteração e sinconia com github
     }
     
 }
