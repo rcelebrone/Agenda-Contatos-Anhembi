@@ -40,12 +40,29 @@ public class ContatosNaNuvem {
             }
             
             if (menuPrograma == 1) {
+                Scanner contato;
                 Contato c = new Contato();
-                c.SetNome("Rodrigo Celebrone");
-                c.SetEmail("rcelebrone@gmail.com");
-                c.SetEndereco("Rua coimbra, 705, diadema/sp");
-                c.SetTelefonePessoal(40574356);
-                c.SetTelefoneComercial(970312633);
+                
+                Label("Nome do contato: ");
+                contato = new Scanner(System.in);
+                c.setNome(contato.nextLine());
+                
+                Label("Email do contato: ");
+                contato = new Scanner(System.in);
+                c.setEmail(contato.next());
+                
+                Label("Endereço do contato: ");
+                contato = new Scanner(System.in);
+                c.setEndereco(contato.nextLine());
+                
+                Label("Telefone pessoal do contato: ");
+                contato = new Scanner(System.in);
+                c.setTelefonePessoal(contato.nextInt());
+                
+                Label("Telefone comercial do contato: ");
+                contato = new Scanner(System.in);
+                c.setTelefoneComercial(contato.nextInt());
+                
                 InserirContato(c);
             } else if (menuPrograma == 2) {
                 BuscarContato(new Contato());
@@ -60,9 +77,10 @@ public class ContatosNaNuvem {
             }
         }
     }
-
+    
     private static void InserirContato(Contato c) {
         listaContato.add(c);
+        Label("[[[Contato adicionado com sucesso]]]");
     }
 
     private static void BuscarContato(Contato c) {
@@ -81,4 +99,13 @@ public class ContatosNaNuvem {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    // para simplificar o uso do system.out.print em Strings
+    private static void Label(String txt){
+        System.out.println(txt);
+    }
+    // para simplificar o uso do system.out.print em ints
+    private static void Label(int txt){
+        System.out.println(txt);
+    }
 }
