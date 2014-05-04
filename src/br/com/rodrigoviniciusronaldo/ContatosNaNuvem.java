@@ -6,6 +6,7 @@
 
 package br.com.rodrigoviniciusronaldo;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,10 +14,14 @@ import java.util.Scanner;
  */
 public class ContatosNaNuvem {
 
+    static ArrayList<Contato> listaContato;
+    
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int menuPrograma = 0;
 
+        listaContato = new ArrayList<>();
+        
         while(menuPrograma != 6){
             System.out.println("////////////////////Escolha uma opção////////////////////////");
             System.out.println("1. Inserir novo contato");
@@ -35,7 +40,13 @@ public class ContatosNaNuvem {
             }
             
             if (menuPrograma == 1) {
-                InserirContato(new Contato());
+                Contato c = new Contato();
+                c.SetNome("Rodrigo Celebrone");
+                c.SetEmail("rcelebrone@gmail.com");
+                c.SetEndereco("Rua coimbra, 705, diadema/sp");
+                c.SetTelefonePessoal(40574356);
+                c.SetTelefoneComercial(970312633);
+                InserirContato(c);
             } else if (menuPrograma == 2) {
                 BuscarContato(new Contato());
             } else if (menuPrograma == 3) {
@@ -51,7 +62,7 @@ public class ContatosNaNuvem {
     }
 
     private static void InserirContato(Contato c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listaContato.add(c);
     }
 
     private static void BuscarContato(Contato c) {
