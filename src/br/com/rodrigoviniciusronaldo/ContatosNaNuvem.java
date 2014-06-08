@@ -1,7 +1,6 @@
 /*
 * Rodrigo Celebrone - 20428584
 * Ronaldo dos Santos Pereira - 20432398
-* Vinicius Andrade - 20470284
 */
 
 package br.com.rodrigoviniciusronaldo;
@@ -65,15 +64,98 @@ public class ContatosNaNuvem {
                 
                 InserirContato(c);
             } else if (menuPrograma == 2) {
-                BuscarContato(new Contato());
+                Label("Informe o nome que deseja buscar: ");
+                Scanner contato = new Scanner(System.in);
+                BuscarContato(contato.nextLine());
             } else if (menuPrograma == 3) {
                 ExibirNomeContatos();
             } else if (menuPrograma == 4) {
-                AtualizarContato(new Contato());
+                Scanner contato;
+                Contato c = new Contato();
+                
+                Label("Nome do contato: ");
+                contato = new Scanner(System.in);
+                c.setNome(contato.nextLine());
+                
+                BuscarContato(c.getNome());
+                
+                Label("Email do contato: ");
+                contato = new Scanner(System.in);
+                c.setEmail(contato.next());
+                
+                Label("Endereço do contato: ");
+                contato = new Scanner(System.in);
+                c.setEndereco(contato.nextLine());
+                
+                Label("Telefone pessoal do contato: ");
+                contato = new Scanner(System.in);
+                c.setTelefonePessoal(contato.nextInt());
+                
+                Label("Telefone comercial do contato: ");
+                contato = new Scanner(System.in);
+                c.setTelefoneComercial(contato.nextInt());
+                
+                Label("Tem certeza que deseja atualizar esse contato? (S/N): ");
+                Scanner pergunta = new Scanner(System.in);
+                String resposta = pergunta.nextLine();
+                while (resposta.equals("S") || resposta.equals("N")) {
+                    Label("Responda 'S' para sim ou 'N' para não.");
+                    resposta = pergunta.nextLine();
+                }
+                switch (resposta) {
+                    case "S":
+                        AtualizarContato(c);
+                        Label("Contato atualizado com sucesso.");
+                        break;
+                    case "N":
+                        Label("Atualização de contato foi cancelada pelo usuário.");
+                        break;
+                }
             } else if (menuPrograma == 5) {
-                RemoverContato(new Contato());
+                Scanner contato;
+                Contato c = new Contato();
+                
+                Label("Nome do contato: ");
+                contato = new Scanner(System.in);
+                c.setNome(contato.nextLine());
+                
+                BuscarContato(c.getNome());
+                
+                Label("Tem certeza que deseja remover esse contato? (S/N): ");
+                Scanner pergunta = new Scanner(System.in);
+                String resposta = pergunta.nextLine();
+                while (resposta.equals("S") || resposta.equals("N")) {
+                    Label("Responda 'S' para sim ou 'N' para não.");
+                    resposta = pergunta.nextLine();
+                }
+                switch (resposta) {
+                    case "S":
+                        RemoverContato(c);
+                        Label("Contato removido com sucesso.");
+                        break;
+                    case "N":
+                        Label("A remoção do contato foi cancelada pelo usuário.");
+                        break;
+                }
             } else if (menuPrograma == 6) {
-                System.exit(0);
+                Label("Tem certeza que deseja sair do programa? (S/N): ");
+                Scanner pergunta = new Scanner(System.in);
+                String resposta = pergunta.nextLine();
+                while (resposta.equals("S") || resposta.equals("N")) {
+                    Label("Responda 'S' para sim ou 'N' para não.");
+                    resposta = pergunta.nextLine();
+                }
+                switch (resposta) {
+                    case "S":
+                        ExibirNomeContatos();
+                        Label("O programa foi encerrado com sucesso (aperte qualquer tecla para fechar).");
+                        new Scanner(System.in).nextLine();
+                        System.exit(0);
+                        break;
+                    case "N":
+                        Label("Operação cancelada pelo usuário, voltando ao menu principal.");
+                        break;
+                }
             }
         }
     }
@@ -83,29 +165,50 @@ public class ContatosNaNuvem {
         Label("[[[Contato adicionado com sucesso]]]");
     }
 
-    private static void BuscarContato(Contato c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static void BuscarContato(String nome) {
+        int posicao = 0;
+        for (Contato c : listaContato){
+            posicao++;
+            if (c.getNome().equals(nome)){
+                Label("[[[Contato encontrado na posição "+posicao+" da lista de contatos]]]");
+                Label("Nome: "+c.getNome());
+                Label("Email: "+c.getEmail());
+                Label("Endereço: "+c.getEndereco());
+                Label("Telefone Pessoal: "+c.getTelefonePessoal());
+                Label("Telefone Comercial: "+c.getTelefoneComercial());
+            }
+        }
     }
 
     private static void ExibirNomeContatos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int posicao = 0;
+        for (Contato c : listaContato){
+            posicao++;
+            Label(posicao+"\t"+c.getNome());
+        }
     }
 
-    private static void AtualizarContato(Contato c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static void AtualizarContato(Contato novo) {
+        for (Contato c : listaContato){
+            if (c.getNome().equals(novo.getNome())){
+                c.setEmail(novo.getEmail());
+                c.setEndereco(novo.getEndereco());
+                c.setTelefonePessoal(novo.getTelefonePessoal());
+                c.setTelefoneComercial(novo.getTelefoneComercial());
+            }
+        }
     }
 
-    private static void RemoverContato(Contato c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private static void RemoverContato(Contato remover) {
+        for (Contato c : listaContato){
+            if (c.getNome().equals(remover.getNome())){
+                listaContato.remove(c);
+            }
+        }
     }
-    
     
     // para simplificar o uso do system.out.print em Strings
     private static void Label(String txt){
-        System.out.println(txt);
-    }
-    // para simplificar o uso do system.out.print em ints
-    private static void Label(int txt){
         System.out.println(txt);
     }
 }
