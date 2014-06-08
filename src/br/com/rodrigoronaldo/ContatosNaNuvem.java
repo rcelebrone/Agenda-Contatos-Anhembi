@@ -216,9 +216,13 @@ public class ContatosNaNuvem {
     }
 
     private static void RemoverContato(Contato remover) {
-        for(int i = 0; i < listaContato.size(); i++){
-            if (remover.getNome().equals(listaContato.get(i).getNome())){
-                listaContato.remove(i);
+        if(listaContato.size()==1){
+            listaContato = new ArrayList<>();
+        }else{
+            for(int i = 0; i < listaContato.size(); i++){
+                if (remover.getNome().equals(listaContato.get(i).getNome())){
+                    listaContato.remove(i);
+                }
             }
         }
         Label("Contato removido com sucesso.");
