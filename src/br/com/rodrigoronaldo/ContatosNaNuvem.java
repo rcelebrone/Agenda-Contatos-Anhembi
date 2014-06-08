@@ -213,12 +213,12 @@ public class ContatosNaNuvem {
     }
 
     private static void RemoverContato(Contato remover) {
-        for (Contato c : listaContato){
-            if (c.getNome().equals(remover.getNome())){
-                listaContato.remove(c);
-                Label("Contato removido com sucesso.");
+        for(int i = 0; i < listaContato.size(); i++){
+            if (remover.getNome().equals(listaContato.get(i).getNome())){
+                listaContato.remove(i);
             }
         }
+        Label("Contato removido com sucesso.");
     }
     
     // para simplificar o uso do system.out.print em Strings
