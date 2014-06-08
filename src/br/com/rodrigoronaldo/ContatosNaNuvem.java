@@ -159,11 +159,11 @@ public class ContatosNaNuvem {
                 switch (resposta.toUpperCase()) {
                     case "S":
                         ExibirNomeContatos();
-                        Label("O programa foi encerrado com sucesso (aperte qualquer tecla para fechar).");
-                        new Scanner(System.in).nextLine();
+                        Label("O programa foi encerrado com sucesso.");
                         System.exit(0);
                         break;
                     case "N":
+                        menuPrograma = 0;
                         Label("Operação cancelada pelo usuário, voltando ao menu principal.");
                         break;
                 }
