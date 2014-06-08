@@ -68,6 +68,9 @@ public class ContatosNaNuvem {
                 Scanner contato = new Scanner(System.in);
                 BuscarContato(contato.nextLine());
             } else if (menuPrograma == 3) {
+                if(listaContato.isEmpty()){
+                    Label("Não existe nenhum contato na lista de contatos.");
+                }
                 ExibirNomeContatos();
             } else if (menuPrograma == 4) {
                 Scanner contato;
