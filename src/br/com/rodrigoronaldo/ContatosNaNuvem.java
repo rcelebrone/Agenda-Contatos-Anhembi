@@ -79,19 +79,21 @@ public class ContatosNaNuvem {
                 
                 BuscarContato(c.getNome());
                 
-                Label("Email do contato: ");
+                Label(" ");
+                
+                Label("Novo email do contato: ");
                 contato = new Scanner(System.in);
                 c.setEmail(contato.next());
                 
-                Label("Endereço do contato: ");
+                Label("Novo endereço do contato: ");
                 contato = new Scanner(System.in);
                 c.setEndereco(contato.nextLine());
                 
-                Label("Telefone pessoal do contato: ");
+                Label("Novo telefone pessoal do contato: ");
                 contato = new Scanner(System.in);
                 c.setTelefonePessoal(contato.nextInt());
                 
-                Label("Telefone comercial do contato: ");
+                Label("Novo telefone comercial do contato: ");
                 contato = new Scanner(System.in);
                 c.setTelefoneComercial(contato.nextInt());
                 
@@ -102,7 +104,7 @@ public class ContatosNaNuvem {
                     Label("Responda 'S' para sim ou 'N' para não.");
                     resposta = pergunta.nextLine();
                 }
-                switch (resposta) {
+                switch (resposta.toUpperCase()) {
                     case "S":
                         AtualizarContato(c);
                         Label("Contato atualizado com sucesso.");
@@ -128,7 +130,7 @@ public class ContatosNaNuvem {
                     Label("Responda 'S' para sim ou 'N' para não.");
                     resposta = pergunta.nextLine();
                 }
-                switch (resposta) {
+                switch (resposta.toUpperCase()) {
                     case "S":
                         RemoverContato(c);
                         Label("Contato removido com sucesso.");
@@ -145,7 +147,7 @@ public class ContatosNaNuvem {
                     Label("Responda 'S' para sim ou 'N' para não.");
                     resposta = pergunta.nextLine();
                 }
-                switch (resposta) {
+                switch (resposta.toUpperCase()) {
                     case "S":
                         ExibirNomeContatos();
                         Label("O programa foi encerrado com sucesso (aperte qualquer tecla para fechar).");
@@ -167,9 +169,11 @@ public class ContatosNaNuvem {
 
     private static void BuscarContato(String nome) {
         int posicao = 0;
+        boolean encontrado = false;
         for (Contato c : listaContato){
             posicao++;
-            if (c.getNome().equals(nome)){
+            if (c.getNome().toUpperCase().equals(nome.toUpperCase())){
+                encontrado = true;
                 Label("[[[Contato encontrado na posição "+posicao+" da lista de contatos]]]");
                 Label("Nome: "+c.getNome());
                 Label("Email: "+c.getEmail());
@@ -177,6 +181,9 @@ public class ContatosNaNuvem {
                 Label("Telefone Pessoal: "+c.getTelefonePessoal());
                 Label("Telefone Comercial: "+c.getTelefoneComercial());
             }
+        }
+        if(!encontrado){
+            Label("[[[Nenhum contato encontrado com o nome '"+nome+"']]]");
         }
     }
 
