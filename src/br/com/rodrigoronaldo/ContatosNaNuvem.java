@@ -79,39 +79,42 @@ public class ContatosNaNuvem {
                 
                 BuscarContato(c.getNome());
                 
-                Label(" ");
+                for (Contato todos : listaContato){
+                    if (todos.getNome().toUpperCase().equals(c.getNome().toUpperCase())){
                 
-                Label("Novo email do contato: ");
-                contato = new Scanner(System.in);
-                c.setEmail(contato.next());
-                
-                Label("Novo endereço do contato: ");
-                contato = new Scanner(System.in);
-                c.setEndereco(contato.nextLine());
-                
-                Label("Novo telefone pessoal do contato: ");
-                contato = new Scanner(System.in);
-                c.setTelefonePessoal(contato.nextInt());
-                
-                Label("Novo telefone comercial do contato: ");
-                contato = new Scanner(System.in);
-                c.setTelefoneComercial(contato.nextInt());
-                
-                Label("Tem certeza que deseja atualizar esse contato? (S/N): ");
-                Scanner pergunta = new Scanner(System.in);
-                String resposta = pergunta.nextLine();
-                while (resposta.equals("S") || resposta.equals("N")) {
-                    Label("Responda 'S' para sim ou 'N' para não.");
-                    resposta = pergunta.nextLine();
-                }
-                switch (resposta.toUpperCase()) {
-                    case "S":
-                        AtualizarContato(c);
-                        Label("Contato atualizado com sucesso.");
-                        break;
-                    case "N":
-                        Label("Atualização de contato foi cancelada pelo usuário.");
-                        break;
+                        Label("Novo email do contato: ");
+                        contato = new Scanner(System.in);
+                        c.setEmail(contato.next());
+
+                        Label("Novo endereço do contato: ");
+                        contato = new Scanner(System.in);
+                        c.setEndereco(contato.nextLine());
+
+                        Label("Novo telefone pessoal do contato: ");
+                        contato = new Scanner(System.in);
+                        c.setTelefonePessoal(contato.nextInt());
+
+                        Label("Novo telefone comercial do contato: ");
+                        contato = new Scanner(System.in);
+                        c.setTelefoneComercial(contato.nextInt());
+
+                        Label("Tem certeza que deseja atualizar esse contato? (S/N): ");
+                        Scanner pergunta = new Scanner(System.in);
+                        String resposta = pergunta.nextLine();
+                        while (resposta.equals("S") || resposta.equals("N")) {
+                            Label("Responda 'S' para sim ou 'N' para não.");
+                            resposta = pergunta.nextLine();
+                        }
+                        switch (resposta.toUpperCase()) {
+                            case "S":
+                                AtualizarContato(c);
+                                Label("Contato atualizado com sucesso.");
+                                break;
+                            case "N":
+                                Label("Atualização de contato foi cancelada pelo usuário.");
+                                break;
+                        }
+                    }
                 }
             } else if (menuPrograma == 5) {
                 Scanner contato;
@@ -123,21 +126,24 @@ public class ContatosNaNuvem {
                 
                 BuscarContato(c.getNome());
                 
-                Label("Tem certeza que deseja remover esse contato? (S/N): ");
-                Scanner pergunta = new Scanner(System.in);
-                String resposta = pergunta.nextLine();
-                while (resposta.equals("S") || resposta.equals("N")) {
-                    Label("Responda 'S' para sim ou 'N' para não.");
-                    resposta = pergunta.nextLine();
-                }
-                switch (resposta.toUpperCase()) {
-                    case "S":
-                        RemoverContato(c);
-                        Label("Contato removido com sucesso.");
-                        break;
-                    case "N":
-                        Label("A remoção do contato foi cancelada pelo usuário.");
-                        break;
+                for (Contato todos : listaContato){
+                    if (todos.getNome().toUpperCase().equals(c.getNome().toUpperCase())){
+                        Label("Tem certeza que deseja remover esse contato? (S/N): ");
+                        Scanner pergunta = new Scanner(System.in);
+                        String resposta = pergunta.nextLine();
+                        while (resposta.equals("S") || resposta.equals("N")) {
+                            Label("Responda 'S' para sim ou 'N' para não.");
+                            resposta = pergunta.nextLine();
+                        }
+                        switch (resposta.toUpperCase()) {
+                            case "S":
+                                RemoverContato(c);
+                                break;
+                            case "N":
+                                Label("A remoção do contato foi cancelada pelo usuário.");
+                                break;
+                        }
+                    }
                 }
             } else if (menuPrograma == 6) {
                 Label("Tem certeza que deseja sair do programa? (S/N): ");
@@ -210,6 +216,7 @@ public class ContatosNaNuvem {
         for (Contato c : listaContato){
             if (c.getNome().equals(remover.getNome())){
                 listaContato.remove(c);
+                Label("Contato removido com sucesso.");
             }
         }
     }
